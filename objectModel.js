@@ -16,7 +16,7 @@ var UserForm = function (name, dateOfBirth, geolocation, image, postAdress, emai
 
 // Show user propperty
 UserForm.prototype.showUser = function (){
-    return console.log (this.name, this.dateOfBirth, this.geolocation, this.image, this.postAdress, this.email, this.friends);
+    console.log (this.name, this.dateOfBirth, this.geolocation, this.image, this.postAdress, this.email, this.friends);
 };
 
 // Show user email propperty
@@ -95,7 +95,7 @@ function inherit(Child, Parent){
 
 // Creating admin
 function Admin() {
-    User.call(this)
+    User.apply(this, arguments)
 }
 Admin.prototype = Object.create(User.prototype);
 
@@ -151,18 +151,26 @@ var login = function (email, password) {
 var user1 = new User ('Andriy', '04.06.1922', 'Uzhgorod', 'ddd', 'jj', 'shakaluk@mail.ru', '123');
 var user2 = new User ('Kolya', '05.11.2000', 'Lviv', 'dsfsdf', '88', 'ssd@gmail.com', '234');
 
-console.log(login('ssd@gmail.com', '234'));
+//console.log(login('ssd@gmail.com', '234'));
 
-user1.showFriends();
-user1.addFriend(user2);
-user1.showFriends();
+//user1.showFriends();
+//user1.addFriend(user2);
+//user1.showFriends();
 
-var cont1 = new Content (user1, 'ss', 'i like mountains');
-var cont2 = new Content (user1, 'http://dsf.img', 'i like milk');
-var cont3 = new Content (user2, 'http://cdfdff.img', 'i like cows');
+//var cont1 = new Content (user1, 'ss', 'i like mountains');
+//var cont2 = new Content (user1, 'http://dsf.img', 'i like milk');
+//var cont3 = new Content (user2, 'http://cdfdff.img', 'i like cows');
 
-user1.deleteContent(cont1);
-user2.showContent();
-console.log(user2.showUser());
-admin.deleteUser(user2);
-console.log(user2.showUser());
+//user1.deleteContent(cont1);
+//user2.showContent();
+//console.log(user2.showUser());
+//admin.deleteUser(user2);
+//console.log(user2.showUser());
+
+var admin1 = new Admin('Artur', '02.01.1956', 'Turkey', 'ddsees', 'ff44', 'ee@mail.ru', 'qwerty');
+
+admin1.showUser();
+user2.showUser();
+admin1.deleteUser(user2);
+user2.showUser();
+console.log(users)
